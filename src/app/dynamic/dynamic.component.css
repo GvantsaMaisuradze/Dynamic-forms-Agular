@@ -1,0 +1,28 @@
+.form-group{
+    margin: 10px 0px;
+}
+.float-right{
+   
+    margin-bottom: 20px;
+}
+.human-info-area{
+    padding: 25px 20px;
+    background-color: rgb(243,243,243);
+    border-radius:15px ;
+    margin: 30px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.submit-btn{
+    margin: 30px 0px;
+}
+.inline-form-groups{
+    display: flex;
+    justify-content: space-between;
+}
+.inline-form-groups .form-group{
+    width: 24%;
+}
+.m-t-1{
+    margin-top: 10px;
+}

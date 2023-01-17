@@ -1,0 +1,94 @@
+<article class="col-md-10 m-auto">
+    <h1>Register Humans Here</h1>
+    <br>
+    <br>
+    <button (click)="addNewHuman()" class="col-md-12 d-block btn btn-success">Add new Human</button>
+    <form [formGroup]="dynamicForm" (ngSubmit)="onFormSubmit()">
+        <article formArrayName="humans">
+            <div *ngFor="let human of getAllHumans().controls; let humanIndex=index">
+                <div [formGroupName]="humanIndex" class="human-info-area">
+                    <button type="button" (click)="deleteHuman(humanIndex)" class=" btn btn-danger float-right">X</button>
+                    <div class="form-group">
+                        <label for="">Enter Image Url</label>
+                        <input
+                        formControlName="image" 
+                        type="text" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Full Name</label>
+                        <input
+                        formControlName="fullName" 
+                        type="text" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Email</label>
+                        <input
+                        formControlName="email" 
+                        type="email" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Phone Number</label>
+                        <input
+                        formControlName="phoneNumber" 
+                        type="text" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Age</label>
+                        <input
+                        formControlName="age" 
+                        type="number" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Work Place</label>
+                        <input
+                        formControlName="workPlace" 
+                        type="text" class="form-control" placeholder="Enter here">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Enter Gender</label>
+                        <select formControlName="gender" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <button (click)="addNewFamilyMember(humanIndex)" class="btn btn-success">Add Family Member</button>
+                    <div formArrayName="familyMembers">
+                        <div *ngFor="let item of getFamilyMembers(humanIndex).controls, let familyIndex=index">
+                            <div [formGroupName]="familyIndex">
+                                <button type="button" (click)="deleteFamilyMember(humanIndex,familyIndex)" class="btn btn-danger m-t-1">Delete Family Memer</button>
+                                <div class="inline-form-groups">
+                                    <div class="form-group">
+                                        <label>Enter Full Name</label>
+                                        <input
+                                        formControlName="fullName" 
+                                        type="text" class="form-control" placeholder="Enter here">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter Age</label>
+                                        <input
+                                        formControlName="age" 
+                                        type="number" class="form-control" placeholder="Enter here">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter email</label>
+                                        <input
+                                        formControlName="email" 
+                                        type="email" class="form-control" placeholder="Enter here">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter Work Place</label>
+                                        <input
+                                        formControlName="workPlace" 
+                                        type="text" class="form-control" placeholder="Enter here">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <button *ngIf="getAllHumans().length >0"
+        type="submit" class="btn btn-success col-md-12 submit-btn">Save</button>
+    </form>
+</article>
